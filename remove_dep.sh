@@ -2,7 +2,7 @@
 
 # Check if running as root
 if ! [ $(id -u) = 0 ]; then
-    echo "Please run this script as root for disk image creation."
+    echo "Please run this script as root"
     exit 1
 fi
 
@@ -10,8 +10,9 @@ fi
 apt remove -y git
 
 # Building Kernel
-apt remove -y fakeroot build-essential ncurses-dev xz-utils libssl-dev bc flex libelf-dev bison zstd
+apt remove -y fakeroot ncurses-dev libssl-dev bc  libelf-dev zstd
+apt remove -y build-essential flex lzop libncurses-dev bison xz-utils
 
 # QEMU
 apt remove -y qemu qemu-sysyem-x86
-apt remove -y build-essential lzop libncurses-dev
+
