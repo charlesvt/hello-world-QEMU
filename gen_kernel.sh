@@ -18,20 +18,12 @@ else
     echo "linux-$KERNEL_VER.tar.xz already detected. No need to download"
 fi
 
-# tar xvf linux-$KERNEL_VER.tar.xz
+tar xvf linux-$KERNEL_VER.tar.xz
 
 cd linux-$KERNEL_VER || exit
 
-# cp -v /boot/config-$(uname -r) .config
+cp -v /boot/config-$(uname -r) .config
 
-# scripts/config --disable SYSTEM_TRUSTED_KEYS
-# scripts/config --disable SYSTEM_REVOCATION_KEYS
-# scripts/config --disable CONFIG_DEBUG_INFO_BTF
-
-# echo -ne "\n" | make -j4
+echo -ne "\n" | make -j4
 
 echo -ne "\n" | make bzImage
-
-echo -ne "\n" | make modules_install
-
-echo -ne "\n" | make install

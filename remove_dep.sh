@@ -11,3 +11,7 @@ apt remove -y git
 
 # Building Kernel
 apt remove -y fakeroot build-essential ncurses-dev xz-utils libssl-dev bc flex libelf-dev bison zstd
+
+# QEMU
+apt remove -y qemu qemu-sysyem-x86
+apt remove -y build-essential lzop libncurses-dev
