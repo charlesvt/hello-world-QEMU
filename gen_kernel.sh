@@ -28,4 +28,5 @@ scripts/config --disable SYSTEM_TRUSTED_KEYS
 scripts/config --disable SYSTEM_REVOCATION_KEYS
 scripts/config --disable CONFIG_DEBUG_INFO_BTF
 
-make -j4
+echo -ne "\n" | make -j4
+
