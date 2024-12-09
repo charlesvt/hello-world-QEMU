@@ -91,8 +91,8 @@ chmod -R a+rw $WORK_DIR
 
 cat << EOF >> init
 #!/bin/sh
-mount -t proc non /proc
-mount -t sysfs non /sys
+mount -t proc none /proc
+mount -t sysfs none /sys
 cat <<!
 hello world
 !
@@ -101,7 +101,9 @@ EOF
 
 chmod a+x init
 
-find . -print0 | cpio --null -ov --format=newc  gzip -9 > initramfs.cpio.gz
+chmod -R a+rw $WORK_DIR
+
+find . -print0 | cpio --null -ov --format=newc | gzip -9 > initramfs.cpio.gz
 
 # Boot Linux
 qemu-system-x86_64 \

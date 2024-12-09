@@ -35,7 +35,7 @@ make install
 cd $WORK_DIR || exit 1
 
 mkdir $WORK_DIR/rootfs 
-INITRAMFS_DIR=$KERNEL_DIR/rootfs
+INITRAMFS_DIR=$WORK_DIR/rootfs
 
 cd $INITRAMFS_DIR
 
@@ -44,25 +44,20 @@ cp -a $BUSYBOX_DIR/_install/* .
 
 touch init
 
-chmod -R a+rw $KERNEL_DIR
+chmod -R a+rw $WORK_DIR
 
 cat << EOF >> init
 #!/bin/sh
-mount -t proc non /proc
-mount -t sysfs non /sys
+mount -t proc none /proc
+mount -t sysfs none /sys
 cat <<!
 hello world
 !
 exec /bin/sh
 EOF
 
+chmod -R a+rw $WORK_DIR
+
 chmod a+x init
 
 find . -print0 | cpio --null -ov --format=newc | gzip -9 > initramfs.cpio.gz
-
-qemu-system-x86_64 \
-    -kernel $KERNEL_DIR/arch/x86_64/boot/bzImage \
-    -initrd $INITRAMFS_DIR/initramfs.cpio.gz \
-    -append "init=/bin/sh console=ttyS0" \
-    -nographic
-
