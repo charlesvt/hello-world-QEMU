@@ -14,5 +14,5 @@ apt install -y fakeroot ncurses-dev libssl-dev bc  libelf-dev zstd
 apt install -y build-essential flex lzop libncurses-dev bison xz-utils
 
 # QEMU
-apt install -y qemu qemu-sysyem-x86
+apt install -y qemu qemu-system-x86
 

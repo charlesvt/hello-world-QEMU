@@ -14,5 +14,5 @@ apt remove -y fakeroot ncurses-dev libssl-dev bc  libelf-dev zstd
 apt remove -y build-essential flex lzop libncurses-dev bison xz-utils
 
 # QEMU
-apt remove -y qemu qemu-sysyem-x86
+apt remove -y qemu qemu-system-x86
 
