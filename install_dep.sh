@@ -10,4 +10,4 @@ fi
 apt install -y git
 
 # Building Kernel
-apt install -y fakeroot build-essential ncurses-dev xz-utils libssl-dev bc flex libelf-dev bison
+apt install -y fakeroot build-essential ncurses-dev xz-utils libssl-dev bc flex libelf-dev bison zstd
